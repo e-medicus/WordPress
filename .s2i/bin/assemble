@@ -13,6 +13,12 @@ mv /tmp/src/* ./
 fix-permissions ./
 
 # make all source files world rw
-echo "Make wp-content writable for all..."
-chmod og+rw wp-content
+echo "Before chmod"
+pwd
+ls -al wp-content
 
+echo "Make wp-content writable for all..."
+chmod -R og+rw wp-content
+
+echo "After chmod"
+ls -al wp-content
