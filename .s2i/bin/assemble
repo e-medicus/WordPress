@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# adapted from https://github.com/sclorg/s2i-php-container/blob/master/5.6/s2i/bin/assemble
+
+set -e
+
+shopt -s dotglob
+echo "---> Installing application source..."
+
+mv /tmp/src/www/* ./
+
+# Fix source directory permissions
+fix-permissions ./
+
+# make all source files world rw
+echo "Make wp-content writable for all..."
+chmod og+rw wp-content
+
